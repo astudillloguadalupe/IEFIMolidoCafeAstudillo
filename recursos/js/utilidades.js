@@ -23,3 +23,22 @@ export function crearElemento(etiqueta, clase, texto) {
 export function normalizar(texto) {
     return texto.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
 }
+
+// Arma el texto del pedido que se envía por WhatsApp.
+export function armarMensajePedido(pedido) {
+    const detalle = pedido.items
+        .map((i) => `- ${i.cantidad} x ${i.nombre} (${formatearPrecio(i.subtotal)})`)
+        .join('\n');
+
+    return [
+        'Hola Molido Café, quiero confirmar mi pedido:',
+        `Pedido: ${pedido.numero}`,
+        `Cliente: ${pedido.cliente.nombre}`,
+        `Teléfono: ${pedido.cliente.telefono}`,
+        `Dirección: ${pedido.cliente.direccion}`,
+        '',
+        detalle,
+        '',
+        `Total: ${formatearPrecio(pedido.total)}`,
+    ].join('\n');
+}
