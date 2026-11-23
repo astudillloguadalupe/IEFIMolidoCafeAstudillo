@@ -1,26 +1,7 @@
 // Vista: confirmación del pedido (paso 3 del proceso de compra).
 import { leerPedido } from '../almacen.js';
-import { crearElemento, formatearPrecio } from '../utilidades.js';
-
-const WHATSAPP_NEGOCIO = '543516134420';
-
-function crearMensajeWhatsApp(pedido) {
-    const detalle = pedido.items
-        .map((i) => `- ${i.cantidad} x ${i.nombre} (${formatearPrecio(i.subtotal)})`)
-        .join('\n');
-
-    return [
-        'Hola Molido Café, quiero confirmar mi pedido:',
-        `Pedido: ${pedido.numero}`,
-        `Cliente: ${pedido.cliente.nombre}`,
-        `Teléfono: ${pedido.cliente.telefono}`,
-        `Dirección: ${pedido.cliente.direccion}`,
-        '',
-        detalle,
-        '',
-        `Total: ${formatearPrecio(pedido.total)}`,
-    ].join('\n');
-}
+import { armarMensajePedido, crearElemento, formatearPrecio } from '../utilidades.js';
+import { WHATSAPP_NEGOCIO } from '../config.js';
 
 export function iniciarConfirmacion() {
     const contenedor = document.querySelector('#confirmacion');
@@ -39,7 +20,7 @@ export function iniciarConfirmacion() {
     );
 
     const whatsapp = crearElemento('a', 'btn btn--primario', 'Enviar pedido por WhatsApp');
-    whatsapp.href = `https://wa.me/${WHATSAPP_NEGOCIO}?text=${encodeURIComponent(crearMensajeWhatsApp(pedido))}`;
+    whatsapp.href = `https://wa.me/${WHATSAPP_NEGOCIO}?text=${encodeURIComponent(armarMensajePedido(pedido))}`;
     whatsapp.target = '_blank';
     whatsapp.rel = 'noopener';
 

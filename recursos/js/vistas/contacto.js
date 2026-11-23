@@ -1,4 +1,4 @@
-const WHATSAPP_NEGOCIO = '543516134420';
+import { WHATSAPP_NEGOCIO } from '../config.js';
 
 // Vista: contacto. Valida el formulario con HTML y JavaScript y muestra una notificación.
 export function iniciarContacto() {
