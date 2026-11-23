@@ -1,19 +1,18 @@
-# Aplicaciones Web 1 - Proyecto SP4
+# Aplicaciones Web 1 - Examen IEFI
 
 ## Molido Café — *El sabor de cada momento*
 
 Este repositorio contiene el desarrollo del proyecto web frontend de **Molido Café**, una cafetería de especialidad y pastelería artesanal correspondiente a un caso de negocio ficticio.
 
-El proyecto se encuentra actualmente en la etapa **SP3 - Estilización del HTML con CSS**, en la que se trabajó sobre la estructura HTML desarrollada previamente para incorporar identidad visual, organización de estilos, adaptación responsive y una mejor presentación general del sitio.
+El proyecto está terminado: incluye la estructura HTML, los estilos CSS, la integración completa con JavaScript, tests unitarios y un flujo de CI/CD con GitHub Actions que publica la web en GitHub Pages.
+
+**Web publicada:** https://astudillloguadalupe.github.io/IEFIMolidoCafeAstudillo/
 
 ---
 
-## Integrantes
+## Autora
 
-- **Astudillo, Guadalupe**
-- **Delgado, Sofía**
-- **Roldán, Lara Martina**
-- **Gaido, Leandro**
+- **Astudillo Pini, Guadalupe** (DNI 46767530)
 
 **Carrera:** Analista de Sistemas  
 **Institución:** Colegio Universitario IES Siglo 21
@@ -41,10 +40,10 @@ La plataforma fue pensada para permitir:
 - **Modelo de negocio:** B2C (*Business to Consumer*), orientado directamente al consumidor final.
 - **Arquitectura propuesta:** enfoque híbrido MPA/SPA.
 - **MPA:** utilizada para organizar las diferentes páginas principales del sitio.
-- **SPA:** prevista para módulos de mayor interacción, como filtros, carrito y validaciones dinámicas, en etapas posteriores.
+- **SPA:** módulos de mayor interacción (catálogo con filtros, carrito y validaciones dinámicas) implementados con JavaScript.
 - **Dominio propuesto:** `molidocafe.com.ar`.
 
-En la etapa actual, el proyecto se encuentra desarrollado principalmente con **HTML5 y CSS3**.
+El proyecto está desarrollado con **HTML5, CSS3 y JavaScript** nativo (ES Modules), sin librerías externas.
 
 ---
 
@@ -91,13 +90,14 @@ Ejemplo:
     --mostaza-claro: #f0e3b7;
     --crema: #faf7ef;
 }
+```
 
 ---
 
-## SP4 - Integración con JavaScript (primera parte)
+## SP4 - Integración con JavaScript 
 
 - **Catálogo renderizado con JavaScript**: las secciones y tarjetas se generan desde `recursos/js/vistas/catalogo.js`.
-- **Datos en un módulo independiente**: `recursos/js/datos/productos.js`.
+- **Datos en JSON**: `recursos/js/datos/productos.json`, leído con `fetch` desde `recursos/js/datos/productos.js`.
 - **Código modularizado (ES Modules)**: `index.js` (punto de entrada), `almacen.js` (carrito en `localStorage`), `utilidades.js` y una vista por página en `vistas/`.
 - **Eventos**: búsqueda, filtros y orden en tiempo real; agregar al carrito; cambiar cantidad / eliminar; envío de formularios; contador del carrito en el menú.
 - **Vistas completas del proceso de compra**: `catalogo.html` → `carrito.html` → `pedido.html` → `confirmacion.html`.
@@ -112,9 +112,10 @@ Ejemplo:
 - Confirmación del pedido con envío por WhatsApp.
 - Persistencia del carrito y último pedido con `localStorage`.
 - Tests unitarios con `node:test`.
-- Workflow de GitHub Actions que ejecuta los tests en cada push o pull request a `main`.
+- Workflow de GitHub Actions que ejecuta los tests en cada push o pull request a `main` y despliega en GitHub Pages si pasan.
 
-> Antes de entregar, reemplazar el número de WhatsApp de ejemplo (`543511234567`) por el número definitivo del proyecto y publicar la web en Vercel o la plataforma elegida.
+- Envío de consultas del formulario de contacto por WhatsApp.
+- Un solo `<h1>` por página, con título propio.
 
 ### Publicación automática
 
